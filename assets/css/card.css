@@ -2,8 +2,14 @@
 /* Контейнер для карточек */
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+  padding: 20px;
+}
+
+.movie-actions {
+  display: flex;
+  justify-content: flex-end;
   padding: 20px;
 }
 
@@ -16,10 +22,10 @@
 
 /* Постер */
 .movie-card img.poster {
+  display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
-  display: block;
 }
 
 /* Заголовок */

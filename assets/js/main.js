@@ -1,8 +1,13 @@
 // main.js файл основной для логики главной страницы
+// class="movie-list" | поиск карточек фильмов (т.к атрибут class)
+const movieList = document.querySelector('.movie-list');
+// class="footer-actions" | кнопка добавить глобальная отдельная (т.к атрибут class)
+const actionsButtonAdd = document.querySelector('.movie-actions');
+
 // тестовый массив для отладки 
 const movies = [
     { 
-      title: "Фильм 1",
+      title: "HELLFIRE",
       year: 2026,
       genre: "Боевик",
       rating: "★★★★★",
@@ -10,15 +15,15 @@ const movies = [
       poster: "assets/images/poster1.webp"  
     },
     {
-      title: "Фильм 2",
+      title: "MINECRAFT",
       year: 2025,
       genre: "Комедия",
       rating: "★★★☆☆",
-      watched: true,
+      watched: false,
       poster: "assets/images/poster2.webp"  
     },
     { 
-      title: "Фильм 3",
+      title: "Годзила и Конг\nНовая империя",
       year: 2024,
       genre: "Фантастика",
       rating: "★★★★☆",
@@ -27,11 +32,22 @@ const movies = [
     },
 ];
 
-// class="movie-list" | поиск всех карточек фильмов (т.к атрибут class)
-const movieList = document.querySelector('.movie-list'); 
+        const globalButtonAdd = document.createElement('button');
+        globalButtonAdd.className = "btn-add";
+        globalButtonAdd.type = "button";
+        globalButtonAdd.textContent = 'Добавить фильм';
 
-// функция отрисовывает все элементы из массива
-function renderItems() {
+        // событие на переход страницы form.html
+        globalButtonAdd.addEventListener("click", () =>{
+            window.location.href = "form.html";
+        });
+
+        // добавление кнопки добавить в отдельный блочный элемент
+        actionsButtonAdd.appendChild(globalButtonAdd); 
+
+
+    // функция отрисовывает все элементы из массива
+    function renderItems() {
     movieList.innerHTML = ""; // очищается контейнер перед отрисовкой
 
     // перебор массива через цикл forEach
@@ -39,8 +55,8 @@ function renderItems() {
         const card = document.createElement('div');
         card.className = "movie-card";
 
-        // элементы создаются через createElement потому что 
-        // создается постер (фото) безопасно без innerHTML
+        // элементы создаются через createElement потому что безопасно без innerHTML
+        // создается постер (фото)
         const img = document.createElement('img');
         img.setAttribute('src', poster); // (имя, значения)
         img.setAttribute('alt', title);
@@ -65,7 +81,16 @@ function renderItems() {
         checkbox.type = "checkbox";
         checkbox.checked = watched;
         label.appendChild(checkbox);
-        label.append(" просмотрено/не просмотрено");
+        label.append("просмотрено/не просмотрено");
+
+        // обработчик на чекбокс
+        checkbox.addEventListener("change", () => {
+            // проверяется тестовый массив для отладки
+            // по индексу watched в массиве movies
+            movies[index].watched = checkbox.checked;
+            console.log(`${title} ${checkbox.checked ? "просмотрен" : "не просмотрен"}`);
+        });
+
 
         // создаются кнопки  
         const buttonWatch = document.createElement('button');
@@ -73,22 +98,20 @@ function renderItems() {
         buttonWatch.type = "button";
         buttonWatch.textContent = 'Отметка о просмотре';
 
-        const buttonAdd = document.createElement('button');
-        buttonAdd.className = "btn-add";
-        buttonAdd.type = "button";
-        buttonAdd.textContent = 'Добавить';
-
-        // событие на переход страницы form.html
+        // модальное окно для обработчика события click (отметка о просмотре)
+        buttonWatch.addEventListener("click", () => {
+            alert(`${title} отмечен как просмотренный!`);
+        });
 
         const buttonDelete = document.createElement('button');
         buttonDelete.className = "btn-delete";
         buttonDelete.type = "button";
-        buttonDelete.textContent = 'Удалить';
+        buttonDelete.textContent = 'Удалить фильм';
 
         buttonDelete.addEventListener("click", () => {
             if (confirm(`Удалить "${title}"?`)) {
                 movies.splice(index, 1); // удаляется фильм из массива
-                renderItems();           // перерисовывается массив
+                renderItems();           // перерисовывается (обновляется) массив
             }
         });
 
@@ -101,11 +124,12 @@ function renderItems() {
             paragraphRating,
             label,
             buttonWatch,
-            buttonAdd,
             buttonDelete 
         );
 
+        // добавление всех карточек в конец
         movieList.appendChild(card);
+
     });
 }
 renderItems();

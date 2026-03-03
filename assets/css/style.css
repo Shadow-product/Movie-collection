@@ -7,20 +7,17 @@
 }
 
 * {box-sizing: border-box; } /* стабилизирует (предотвращает выползание блоков) */
-html {
+html, body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    height: 100%; /* прижимает футер внизу несмотря на содержимое страницы */
     margin: 0;
     padding: 0;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    margin: 0;
-}
-
-header {
+.movie-header {
+    margin: 10px;   
     padding: 10px;
 }
 
@@ -53,14 +50,33 @@ header {
 }
 
 main {
-    flex: 1;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
     padding: 20px;
+    flex: 1;
 }
 
-h1, h2 {
+a.link {
     color: var(--text-main);
+    text-decoration: none;
+}
+
+a:hover.link {
+    color: var(--text-hover-main);
+    text-decoration: underline;
+    opacity: 0.7;
+}
+
+h1 {
     font-family: "Inter", sans-serif;
-    font-size: 32px;
+    font-size: 30px;
+    color: var(--text-main);
+}
+
+h2 {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    white-space: pre-line; /* учитывает переносы */
 }
 
 p {
@@ -69,12 +85,18 @@ p {
     color: var(--text-main);
 }
 
+label {
+    font-size: 14px;
+    color: var(--text-main);
+}
+
 .site-footer {
   background-color: var(--bg-color);
   color: var(--text-main);
   list-style: none;
   text-align: center;
-  padding: 20px;
+  margin: 10px;
+  padding: 10px;
 }
 
 .site-footer a {
