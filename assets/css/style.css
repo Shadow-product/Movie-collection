@@ -4,6 +4,10 @@
 --card-bg: #002b36;
 --text-main: #ffffff;
 --text-hover-main: #f7fb04;
+--btn-watch: #4caf50;
+--btn-add: #2196f3;
+--btn-delete: #f44336;
+--checkbox-highlight: #FFD700;
 }
 
 * {box-sizing: border-box; } /* стабилизирует (предотвращает выползание блоков) */
@@ -50,10 +54,8 @@ html, body {
 }
 
 main {
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
     padding: 20px;
-    flex: 1;
+    flex: 1; /* контейнер занимает все доступное свободное пространство */
 }
 
 a.link {
@@ -82,11 +84,6 @@ h2 {
 p {
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
-    color: var(--text-main);
-}
-
-label {
-    font-size: 14px;
     color: var(--text-main);
 }
 

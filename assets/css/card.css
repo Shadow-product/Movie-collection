@@ -21,7 +21,7 @@
 }
 
 /* Постер */
-.movie-card img.poster {
+.poster {
   display: block;
   width: 100%;
   height: auto;
@@ -45,16 +45,40 @@
   display: block;
   margin: 10px 0;
   font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: var(--text-main);
 }
 
 /* Кнопки */
-.movie-card button {
+.btn-watch, .btn-add, .btn-delete {
   margin: 5px;
   padding: 8px 12px;
+  font-size: bold;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: bold;
+}
+
+.btn-watch {
+  background: var(--btn-watch);
+  color: var(--text-main);
+}
+
+.btn-delete {
+  background: var(--btn-delete);
+  color: var(--text-main);
+}
+
+.btn-add {
+  background: var(--btn-add);
+  color: var(--text-main);
+}
+
+.highlight {
+  border: 5px solid var(--checkbox-highlight);
+  background-color: rgba(255, 215, 0, 0.15);
+  box-shadow: 0 0 15px var(--checkbox-highlight);
+  transition: all 0.3s ease;
 }
 
 /* hover эффекты для кнопок */

@@ -33,7 +33,7 @@ const movies = [
 ];
 
         const globalButtonAdd = document.createElement('button');
-        globalButtonAdd.className = "btn-add";
+        globalButtonAdd.classList.add("btn-add");
         globalButtonAdd.type = "button";
         globalButtonAdd.textContent = 'Добавить фильм';
 
@@ -53,14 +53,14 @@ const movies = [
     // перебор массива через цикл forEach
     movies.forEach(({ title, year, genre, rating, watched, poster }, index) =>  {
         const card = document.createElement('div');
-        card.className = "movie-card";
+        card.classList.add("movie-card");
 
         // элементы создаются через createElement потому что безопасно без innerHTML
         // создается постер (фото)
         const img = document.createElement('img');
         img.setAttribute('src', poster); // (имя, значения)
         img.setAttribute('alt', title);
-        img.className = "poster";
+        img.classList.add("poster");
 
         // создается заголовок (h2) и описание (p)
         const header2 = document.createElement('h2');
@@ -88,13 +88,16 @@ const movies = [
             // проверяется тестовый массив для отладки
             // по индексу watched в массиве movies
             movies[index].watched = checkbox.checked;
+            card.classList.toggle("highlight", checkbox.checked);
             console.log(`${title} ${checkbox.checked ? "просмотрен" : "не просмотрен"}`);
+            console.log(card.classList.contains("highlight"));
+            renderItems(); // перерисовывается (обновляется) массив
         });
 
 
         // создаются кнопки  
         const buttonWatch = document.createElement('button');
-        buttonWatch.className = "btn-watch"; 
+        buttonWatch.classList.add("btn-watch"); 
         buttonWatch.type = "button";
         buttonWatch.textContent = 'Отметка о просмотре';
 
@@ -104,7 +107,7 @@ const movies = [
         });
 
         const buttonDelete = document.createElement('button');
-        buttonDelete.className = "btn-delete";
+        buttonDelete.classList.add("btn-delete");
         buttonDelete.type = "button";
         buttonDelete.textContent = 'Удалить фильм';
 
