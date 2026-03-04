@@ -62,16 +62,19 @@
 .btn-watch {
   background: var(--btn-watch);
   color: var(--text-main);
-}
-
-.btn-delete {
-  background: var(--btn-delete);
-  color: var(--text-main);
+  transition: all 0.3s ease; /* плавный переход */
 }
 
 .btn-add {
   background: var(--btn-add);
   color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+.btn-delete {
+  background: var(--btn-delete);
+  color: var(--text-main);
+  transition: all 0.3s ease;
 }
 
 .highlight {
@@ -83,33 +86,18 @@
 
 /* hover эффекты для кнопок */
 /* Кнопка "Отметка о просмотре" */
-.btn-watch {
-  background: var(--btn-watch);
-  color: var(--text-main);
-  transition: all 0.3s ease; /* плавный переход */
-}
 .btn-watch:hover {
   background: #45a049;
   opacity: 0.7;
 }
 
 /* Кнопка "Добавить фильм" */
-.btn-add {
-  background: var(--btn-add);
-  color: var(--text-main);
-  transition: all 0.3s ease;
-}
 .btn-add:hover {
   background: #1976d2;
   opacity: 0.7;
 }
 
 /* Кнопка "Удалить фильм" */
-.btn-delete {
-  background: var(--btn-delete);
-  color: var(--text-main);
-  transition: all 0.3s ease;
-}
 .btn-delete:hover {
   background: #d32f2f;
   opacity: 0.7;
