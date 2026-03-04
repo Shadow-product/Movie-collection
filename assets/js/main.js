@@ -55,13 +55,6 @@ const movies = [
         const card = document.createElement('div');
         card.classList.add("movie-card");
 
-        // элементы создаются через createElement потому что безопасно без innerHTML
-        // создается постер (фото)
-        const img = document.createElement('img');
-        img.setAttribute('src', poster); // (имя, значения)
-        img.setAttribute('alt', title);
-        img.classList.add("poster");
-
         // создается заголовок (h2) и описание (p)
         const header2 = document.createElement('h2');
         header2.textContent = title;
@@ -82,6 +75,13 @@ const movies = [
         checkbox.checked = watched;
         label.appendChild(checkbox);
         label.append("просмотрено/не просмотрено");
+
+        // элементы создаются через createElement потому что безопасно без innerHTML
+        // создается постер (фото)
+        const img = document.createElement('img');
+        img.setAttribute('src', poster); // (имя, значения)
+        img.setAttribute('alt', title);
+        img.classList.add("poster");
 
         // обработчик на чекбокс
         checkbox.addEventListener("change", () => {
@@ -111,6 +111,7 @@ const movies = [
         buttonDelete.type = "button";
         buttonDelete.textContent = 'Удалить фильм';
 
+        // обработчик на кнопку удалить фильм
         buttonDelete.addEventListener("click", () => {
             if (confirm(`Удалить "${title}"?`)) {
                 movies.splice(index, 1); // удаляется фильм из массива
