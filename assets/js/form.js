@@ -68,9 +68,9 @@ movieForm.addEventListener('submit', (event) => {
   };
 
   // Сохраняется в localStorage (локальное хранилище)
-  const movies = getMovies();
-  movies.push(newMovie); // добавляется в конец
-  saveMovies(movies);
+  const movies = getMovies(); // получение текущего массива фильмов
+  movies.push(newMovie); // добавляется в конец массива
+  saveMovies(movies); // сохранение массива обратно в localStorage
 });
 
 // вызов функции добавление и сохранение фильма на обработчик события "click"

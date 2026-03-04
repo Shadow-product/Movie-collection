@@ -6,6 +6,15 @@ const movieList = document.querySelector('.movie-list');
 // class="footer-actions" | кнопка добавить глобальная отдельная (т.к атрибут class)
 const actionsButtonAdd = document.querySelector('.movie-actions');
 
+const hamburger = document.querySelector('#hamburger');
+const navLinks = document.querySelector('#nav-links');
+
+if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+}
+
 // тестовый массив для отладки 
 const testMovies = [
     { 

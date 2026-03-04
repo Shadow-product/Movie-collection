@@ -13,8 +13,10 @@
 <body>
     <!-- header -->
     <header class="movie-header">
-        <nav>
-            <ul class="nav-links">
+        <nav class="navbar">
+            <div class="logo">🎬 MovieCatalog</div>
+            <button class="hamburger" id="hamburger">☰</button>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="form.html">Форма</a></li>
                 <li><a href="about.html">О проекте</a></li>
@@ -51,5 +53,7 @@
             </nav>
         </div>
     </footer>
+
+    <script  type="module" src="assets/js/main.js"></script> <!-- подключение файла main.js к about.html для работы с hamburger-menu -->
 </body>
 </html>
