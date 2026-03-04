@@ -78,6 +78,7 @@ h1 {
 h2 {
     font-family: "Inter", sans-serif;
     font-size: 18px;
+    color: var(--text-main);
     white-space: pre-line; /* учитывает переносы */
 }
 
