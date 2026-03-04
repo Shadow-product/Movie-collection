@@ -1,24 +1,26 @@
 // main.js файл основной для логики главной страницы
+import { getMovies, saveMovies } from './storage.js';
+
 // class="movie-list" | поиск карточек фильмов (т.к атрибут class)
 const movieList = document.querySelector('.movie-list');
 // class="footer-actions" | кнопка добавить глобальная отдельная (т.к атрибут class)
 const actionsButtonAdd = document.querySelector('.movie-actions');
 
 // тестовый массив для отладки 
-const movies = [
+const testMovies = [
     { 
       title: "HELLFIRE",
       year: 2026,
       genre: "Боевик",
-      rating: "★★★★★",
+      rating: "★★★★★★★",
       watched: false,
       poster: "assets/images/poster1.webp"  
     },
-    {
+    {   
       title: "MINECRAFT",
       year: 2025,
       genre: "Комедия",
-      rating: "★★★☆☆",
+      rating: "★★★★★",
       watched: false,
       poster: "assets/images/poster2.webp"  
     },
@@ -26,29 +28,36 @@ const movies = [
       title: "Годзила и Конг\nНовая империя",
       year: 2024,
       genre: "Фантастика",
-      rating: "★★★★☆",
+      rating: "★★★★★★★",
       watched: false,
       poster: "assets/images/poster3.webp" 
     },
 ];
 
-        const globalButtonAdd = document.createElement('button');
-        globalButtonAdd.classList.add("btn-add");
-        globalButtonAdd.type = "button";
-        globalButtonAdd.textContent = 'Добавить фильм';
+// если localStorage пустой сохраняются тестовые фильмы
+if (getMovies().length === 0) {
+    saveMovies(testMovies);
+}
 
-        // событие на переход страницы form.html
-        globalButtonAdd.addEventListener("click", () =>{
-            window.location.href = "form.html";
-        });
+    const globalButtonAdd = document.createElement('button');
+    globalButtonAdd.classList.add("btn-add");
+    globalButtonAdd.type = "button";
+    globalButtonAdd.textContent = 'Добавить фильм';
 
-        // добавление кнопки добавить в отдельный блочный элемент
-        actionsButtonAdd.appendChild(globalButtonAdd); 
+    // событие на переход страницы form.html
+    globalButtonAdd.addEventListener("click", () =>{
+        window.location.href = "form.html";
+    });
+
+    // добавление кнопки добавить в отдельный блочный элемент
+    actionsButtonAdd.appendChild(globalButtonAdd); 
 
 
     // функция отрисовывает все элементы из массива
     function renderItems() {
     movieList.innerHTML = ""; // очищается контейнер перед отрисовкой
+
+    const movies = getMovies(); // читаются данные из localStorage
 
     // перебор массива через цикл forEach
     movies.forEach(({ title, year, genre, rating, watched, poster }, index) =>  {
@@ -91,9 +100,9 @@ const movies = [
             card.classList.toggle("highlight", checkbox.checked);
             console.log(`${title} ${checkbox.checked ? "просмотрен" : "не просмотрен"}`);
             console.log(card.classList.contains("highlight"));
+            saveMovies(movies); // сохраняются изменение
             renderItems(); // перерисовывается (обновляется) массив
         });
-
 
         // создаются кнопки  
         const buttonWatch = document.createElement('button');
@@ -115,7 +124,8 @@ const movies = [
         buttonDelete.addEventListener("click", () => {
             if (confirm(`Удалить "${title}"?`)) {
                 movies.splice(index, 1); // удаляется фильм из массива
-                renderItems();           // перерисовывается (обновляется) массив
+                saveMovies(movies); // сохраняются изменение
+                renderItems(); // перерисовывается (обновляется) массив
             }
         });
 
@@ -136,4 +146,6 @@ const movies = [
 
     });
 }
+
+// перерисовывается (обновляется) массив
 renderItems();

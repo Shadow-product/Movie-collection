@@ -33,17 +33,24 @@
 
 /* Карточка фильма */
 .movie-card {
+  display: flex;
+  flex-direction: column;
   background: var(--container-color);
   border-radius: 20px;
   text-align: center;
+  align-items: center;
+  width: 220px;
+  min-height: 400px;
+  margin: 10px;
+  padding: 10px;
 }
 
 /* Постер */
 .poster {
-  display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
+  border-radius: 20px;
 }
 
 /* Заголовок */
