@@ -23,6 +23,7 @@ html, body {
     padding: 0;
 }
 
+/* общий header страниц */
 .movie-header {
     margin: 10px;   
     padding: 10px;
@@ -62,6 +63,8 @@ main {
 }
 
 a.link {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
     color: var(--text-main);
     text-decoration: none;
 }
@@ -72,20 +75,31 @@ a:hover.link {
     opacity: 0.7;
 }
 
-h1 {
+/* <h1> для главной и формы страниц заголовки */
+.home-header, .form-header {
     font-family: "Inter", sans-serif;
     font-size: 30px;
     color: var(--text-main);
 }
 
-h2 {
+/* <h1>, <h2>, <h3> для страницы о проекте заголовки */
+.about-header, .about-header2, .about-header3 {
     font-family: "Inter", sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     color: var(--text-main);
 }
 
-p {
+/* <p> для страницы о проекте параграфы */
+.about-paragraph {
     font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+/* <p> для страницы о проекте инструкция по использованию параграфф */
+.instructions-use {
+    font-family: "Monsterrat", sans-serif;
+    font-size: 14px;
     color: var(--text-main);
 }
 
@@ -106,6 +120,12 @@ p {
 
 .site-footer a:hover {
   color: var(--text-hover-main);
+}
+
+/* <p> общий футер для всех страниц параграф */
+.footer-paragraph {
+    font-family: "Montserrat", sans-serif;
+    color: var(--text-main);
 }
 
 .footer-nav {

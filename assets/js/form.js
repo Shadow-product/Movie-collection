@@ -6,8 +6,15 @@ const movieForm = document.querySelector('#movie-form');
 // id="cancel" | поиск кнопки переход на главную
 const cancelButton = document.querySelector('#cancel');
 
-movieForm.addEventListener("submit", (event) => {
+function goHome() {
+    // добавление элемента и сохранение фильма в localStorage
+  window.location.href = "index.html";
+}
+
+movieForm.addEventListener('submit', (event) => {
     event.preventDefault(); // отмена стандартной отправки
+    // вызов функции добавление и сохранение фильма
+    goHome(); // переход после сохранения
 
     // получение значения
     const title = document.querySelector("#title").value;
@@ -64,12 +71,7 @@ movieForm.addEventListener("submit", (event) => {
   const movies = getMovies();
   movies.push(newMovie); // добавляется в конец
   saveMovies(movies);
-
-  // Переход на главную
-  window.location.href = "index.html";
 });
 
-// событие на переход страницы index.html
-cancelButton.addEventListener("click", () => {
-  window.location.href = "index.html";
-});
+// вызов функции добавление и сохранение фильма на обработчик события "click"
+cancelButton.addEventListener('click', goHome);

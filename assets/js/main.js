@@ -93,7 +93,7 @@ if (getMovies().length === 0) {
         img.classList.add("poster");
 
         // обработчик на чекбокс
-        checkbox.addEventListener("change", () => {
+        checkbox.addEventListener('change', () => {
             // проверяется тестовый массив для отладки
             // по индексу watched в массиве movies
             movies[index].watched = checkbox.checked;
@@ -111,7 +111,7 @@ if (getMovies().length === 0) {
         buttonWatch.textContent = 'Отметка о просмотре';
 
         // модальное окно для обработчика события click (отметка о просмотре)
-        buttonWatch.addEventListener("click", () => {
+        buttonWatch.addEventListener('click', () => {
             alert(`${title} отмечен как просмотренный!`);
         });
 
@@ -121,7 +121,7 @@ if (getMovies().length === 0) {
         buttonDelete.textContent = 'Удалить фильм';
 
         // обработчик на кнопку удалить фильм
-        buttonDelete.addEventListener("click", () => {
+        buttonDelete.addEventListener('click', () => {
             if (confirm(`Удалить "${title}"?`)) {
                 movies.splice(index, 1); // удаляется фильм из массива
                 saveMovies(movies); // сохраняются изменение

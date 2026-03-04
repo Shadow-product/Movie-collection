@@ -55,12 +55,17 @@
 
 /* Заголовок */
 .movie-card h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  color: var(--text-main);
   margin: 10px 0;
   white-space: pre-line; /* учитывает переносы */
 }
 
 /* Текстовые поля */
 .movie-card p {
+  font-family: "Montserrat", sans-serif;
+  color: var(--text-main);
   margin: 5px 0;
 }
 
