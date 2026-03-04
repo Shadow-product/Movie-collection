@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Страница с формой</title>
     <link rel="stylesheet" href="assets/css/style.css"> <!-- подключение общего css-файла для стилей -->
+    <link rel="stylesheet" href="assets/css/form.css"> <!-- подключение формы css-файла для стилей -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -24,6 +25,30 @@
 
     <main>
         <h1>Добавить новый фильм</h1>
+        <form id="movie-form" method="POST">
+            <label for="title">Название фильма:</label>
+            <input id="title" type="text" name="title" class="form-input" placeholder="Введите название фильма:">
+
+            <label for="year">Дата фильма</label>
+            <input id="year" type="number" name="year" class="form-input" placeholder="Введите дату фильма:">
+
+            <label for="genre">Жанр фильма:</label>
+            <input id="genre" type="text" name="genre" class="form-input" placeholder="Введите жанр фильма:">
+
+            <label for="rating">Рейтинг фильма:</label>
+            <input id="rating" type="number" name="rating" class="form-input" min="1" max="5" step="1" placeholder="Введите рейтинг фильма:">
+
+            <label for="watched">Просмотрено:</label>
+            <input id="watched" type="checkbox" name="watched" class="form-checkbox" checked>
+
+            <label for="poster">Постер (URL):</label>
+            <input id="poster" type="text" name="poster" class="form-input" placeholder="https://example.com/poster.jpg">
+
+            <div class="form-buttons">
+                <button type="submit" class="btn-save">Сохранить</button>
+                <button type="button" id="cancel" class="btn-delete">На главную</button>
+            </div>
+        </form>
     </main>
 
     <!-- footer -->

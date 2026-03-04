@@ -13,9 +13,27 @@
   padding: 20px;
 }
 
+/* Кнопка "Добавить фильм" */
+.btn-add {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--btn-primary-bg);
+  color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+/* Кнопка "Добавить фильм" с hover-эффектом */
+.btn-add:hover {
+  background: var(--btn-primary-hover);
+  opacity: 0.7;
+}
+
 /* Карточка фильма */
 .movie-card {
-  background: var(--card-bg);
+  background: var(--container-color);
   border-radius: 20px;
   text-align: center;
 }
@@ -31,14 +49,12 @@
 /* Заголовок */
 .movie-card h2 {
   margin: 10px 0;
-  color: var(--text-main);
   white-space: pre-line; /* учитывает переносы */
 }
 
 /* Текстовые поля */
 .movie-card p {
   margin: 5px 0;
-  color: var(--text-main);
 }
 
 /* Чекбокс и подпись */
@@ -48,13 +64,13 @@
   font-family: "Inter", sans-serif;
   font-size: 14px;
   color: var(--text-main);
+  cursor: pointer;
 }
 
-/* Кнопки */
-.btn-watch, .btn-add, .btn-delete {
+/* Кнопки "Отметка о просмотре" и "Удалить фильм" */
+.btn-watch, .btn-delete {
   margin: 5px;
   padding: 8px 12px;
-  font-size: bold;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -66,18 +82,13 @@
   transition: all 0.3s ease; /* плавный переход */
 }
 
-.btn-add {
-  background: var(--btn-add);
-  color: var(--text-main);
-  transition: all 0.3s ease;
-}
-
 .btn-delete {
   background: var(--btn-delete);
   color: var(--text-main);
   transition: all 0.3s ease;
 }
 
+/* css-класс на обработчик чекбокса */
 .highlight {
   border: 5px solid var(--checkbox-highlight);
   background-color: rgba(255, 215, 0, 0.15);
@@ -88,18 +99,12 @@
 /* hover эффекты для кнопок */
 /* Кнопка "Отметка о просмотре" */
 .btn-watch:hover {
-  background: #45a049;
-  opacity: 0.7;
-}
-
-/* Кнопка "Добавить фильм" */
-.btn-add:hover {
-  background: #1976d2;
+  background: var(--btn-watch-hover);
   opacity: 0.7;
 }
 
 /* Кнопка "Удалить фильм" */
 .btn-delete:hover {
-  background: #d32f2f;
+  background: var(--btn-delete-hover);
   opacity: 0.7;
 }

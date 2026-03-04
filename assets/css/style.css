@@ -1,12 +1,15 @@
 /* style.css */
 :root {
 --bg-color: #00171f;
---card-bg: #002b36;
+--container-color: #002b36;
 --text-main: #ffffff;
 --text-hover-main: #f7fb04;
---btn-watch: #4caf50;
---btn-add: #2196f3;
+--btn-watch: #2196f3; 
+--btn-primary-bg: #4caf50;
 --btn-delete: #f44336;
+--btn-watch-hover: #1976d2; 
+--btn-primary-hover: #45a049;
+--btn-delete-hover: #d32f2f;
 --checkbox-highlight: #FFD700;
 }
 
@@ -83,7 +86,6 @@ h2 {
 
 p {
     font-family: "Montserrat", sans-serif;
-    font-size: 16px;
     color: var(--text-main);
 }
 
