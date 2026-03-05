@@ -60,6 +60,7 @@ html, body {
 }
 
 .nav-links li a {
+    font-family: "Montserrat", "sans-serif";
     font-size: 12px;
     color: var(--text-main);
     text-decoration: none;
@@ -86,18 +87,76 @@ html, body {
   .hamburger {
     display: block; /* показывается кнопку */
   }
+
+  .movie-card {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+/* мобильные устройства 321 и 480px включительно */
+@media (min-width: 321px) and (max-width: 480px) {
+  .nav-links {
+    display: none; /* скрыто по умолчанию */
+    flex-direction: column;
+    background: var(--bg-color);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .nav-links.active {
+    display: flex; /* показывается при клике */
+  }
+
+  .hamburger {
+    display: block; /* показывается кнопка */
+    font-size: 26px;
+  }
+
+  .movie-card {
+    width: 100%;
+    margin: 15px 0;
+    font-size: 14px;
+  }
+
+  .poster {
+    width: 100%;
+    height: auto;
+  }
+
+  .form-input {
+    width: 100%;
+    font-size: 14px;
+  }
 }
 
 /* Десктопы от 1024px */
 @media (min-width: 1024px) {
-  .hamburger {
-    display: none; /* скрываем кнопку */
-  }
+  /* навигация декстоп */
   .nav-links {
     display: flex; /* меню всегда видно */
     flex-direction: row;
     position: static;
     background: none;
+  }
+
+   .hamburger {
+    display: none; /* скрывается кнопка */
+  }
+
+  /* карточка фильма десктоп */
+  .movie-card {
+    width: 300px;
+    margin: 20px;
+  }
+
+  /* постер (фото) десктоп */
+  .poster {
+    width: 100%;
+    height: auto;
   }
 }
 
