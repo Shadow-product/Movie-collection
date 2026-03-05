@@ -37,8 +37,8 @@ html, body {
 }
 
 .logo {
-    font-family: "Inter", "sans-serif";
-    font-size: 10px;
+    font-family: "Montserrat", "sans-serif";
+    font-size: 16px;
     color: var(--text-main);
 }
 
@@ -61,7 +61,7 @@ html, body {
 
 .nav-links li a {
     font-family: "Montserrat", "sans-serif";
-    font-size: 12px;
+    font-size: 16px;
     color: var(--text-main);
     text-decoration: none;
     padding: 10px;
@@ -235,7 +235,7 @@ a:hover.link {
 
 .footer-nav {
     display: flex;
-    font-family: "Monsterrat", "sans-serif";
+    font-family: "Montserrat", "sans-serif";
     gap: 20px;
     list-style: none;
     margin: 0;
