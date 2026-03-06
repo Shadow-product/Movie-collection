@@ -91,7 +91,7 @@ if (!localStorage.getItem('movies')) {
         if (!movieList) {
           if (main) {
             const info = document.createElement('p');
-            info.textContent = 'Каталог фильмов доступен только на главной странице. Перейдите туда, чтобы просмотреть фильмы в каталоге..';
+            info.textContent = 'Все фильмы собраны на главной странице - заходите туда, чтобы посмотреть каталог.';
             info.classList.add("info-message");
             main.appendChild(info);
             }
