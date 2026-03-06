@@ -4,14 +4,17 @@ import { getMovies, saveMovies } from './storage.js';
 // class="movie-list" | поиск карточек фильмов (т.к атрибут class)
 const movieList = document.querySelector('.movie-list');
 
-// class="footer-actions" | кнопка добавить глобальная отдельная (т.к атрибут class)
+// class="movie-actions" | кнопка добавить глобальная отдельная (т.к атрибут class)
 const actionsButtonAdd = document.querySelector('.movie-actions');
 
 // id="hamburger" | поиск hamburger-menu (т.к атрибут id)
-const hamburger = document.querySelector('#hamburger');
+const hamburger = document.querySelector('#hamburger-menu');
 
-// id="hamburger" | поиск nav-links (т.к атрибут id)
+// id="nav-links" | поиск nav-links (т.к атрибут id)
 const navLinks = document.querySelector('#nav-links'); 
+
+// поиск элемента <main></main> (без id и class)
+const main = document.querySelector('main');
 
 // проверка условия на hamburger-menu с обработчиком события click
 if (hamburger && navLinks) {
@@ -25,6 +28,7 @@ if (hamburger && navLinks) {
 // тестовый массив для отладки 
 const testMovies = [
     { 
+      id: 1741260000000,  
       title: "HELLFIRE",
       year: 2026,
       genre: "Боевик",
@@ -33,6 +37,7 @@ const testMovies = [
       poster: "assets/images/poster1.webp"  
     },
     {   
+      id: 1741260000001,  
       title: "MINECRAFT",
       year: 2025,
       genre: "Комедия",
@@ -41,6 +46,7 @@ const testMovies = [
       poster: "assets/images/poster2.webp"  
     },
     { 
+      id: 1741260000002,  
       title: "Годзила и Конг\nНовая империя",
       year: 2024,
       genre: "Фантастика",
@@ -50,11 +56,18 @@ const testMovies = [
     },
 ];
 
-// если localStorage пустой сохраняются тестовые фильмы
-if (getMovies().length === 0) {
+// если localStorage пустой ИЛИ массив пустой сохраняются тестовые фильмы
+// надежный вариант проверки наличие ключа 'movies' и защита от случайных перезаписей данных
+if (!localStorage.getItem('movies')) {
     saveMovies(testMovies);
-}
+    console.log("Сохранение тестовых данных: ", getMovies());
+}   
 
+    // вывод в консоль текущего массива данных для проверки отладки (дополнительно)
+    const movies = getMovies(); // читаются данные из localStorage
+    console.log("Текущие фильмы: ", movies);
+
+    // создание кнопки для добавления фильма как отдельный блочный элемент
     const globalButtonAdd = document.createElement('button');
     globalButtonAdd.classList.add('btn-add');
     globalButtonAdd.type = "button";
@@ -65,18 +78,38 @@ if (getMovies().length === 0) {
         window.location.href = "form.html";
     });
 
-    // добавление кнопки добавить в отдельный блочный элемент
-    actionsButtonAdd.appendChild(globalButtonAdd); 
-
+    // добавление кнопки добавить в отдельный блочный элемент и
+    // проверка на существования элемента
+    if (actionsButtonAdd) {
+        actionsButtonAdd.appendChild(globalButtonAdd); 
+    }
 
     // функция отрисовывает все элементы из массива
     function renderItems() {
-    movieList.innerHTML = ""; // очищается контейнер перед отрисовкой
+        let movies = getMovies();
 
-    const movies = getMovies(); // читаются данные из localStorage
+        if (!movieList) {
+          if (main) {
+            const info = document.createElement('p');
+            info.textContent = 'Каталог фильмов доступен только на главной странице. Перейдите туда, чтобы просмотреть список.';
+            info.classList.add("info-message");
+            main.appendChild(info);
+            }
+            return;
+        }
 
-    // перебор массива через цикл forEach
-    movies.forEach(({ title, year, genre, rating, watched, poster }, index) =>  {
+        // также при полном удалении всех карточек фильма проверка на длину массива
+        // тестовые данные сохраняются для отладки (дополнительно) - movies.length === 0
+        if (movies.length === 0) {
+         saveMovies(testMovies);
+         movies = getMovies();
+         console.log("Восстановлены тестовые данные:", movies);
+        }
+
+          movieList.innerHTML = ""; // очищается контейнер перед отрисовкой
+
+        // перебор массива через цикл forEach
+        movies.forEach(({ title, year, genre, rating, watched, poster }, index) =>  {
         const card = document.createElement('div');
         card.classList.add("movie-card");
 
@@ -98,7 +131,6 @@ if (getMovies().length === 0) {
         const checkbox = document.createElement('input');
         checkbox.type = "checkbox";
         checkbox.checked = watched;
-        label.appendChild(checkbox);
         label.append("просмотрено/не просмотрено");
 
         // элементы создаются через createElement потому что безопасно без innerHTML

@@ -16,7 +16,7 @@ if (savedTheme === 'dark') {
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme');
 
-    // проверка наличие css-класса dark-theme
+    // проверка наличие css-класса dark-theme и в зависимости от режима меняется текст кнопки
     if (document.body.classList.contains('dark-theme')) {
       themeToggle.textContent = 'Светлая тема';
       saveTheme('dark'); // включить светлую тему
