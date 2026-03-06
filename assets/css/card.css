@@ -35,8 +35,12 @@
 .movie-card {
   display: flex;
   flex-direction: column;
-  background: var(--container-color);
-  border-radius: 20px;
+  background-color: var(--container-color);
+  color: var(--text-main);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   text-align: center;
   align-items: center;
   width: 220px;
@@ -103,8 +107,6 @@
 /* css-класс на обработчик чекбокса */
 .highlight {
   border: 5px solid var(--checkbox-highlight);
-  background-color: rgba(255, 215, 0, 0.15);
-  box-shadow: 0 0 15px var(--checkbox-highlight);
   transition: all 0.3s ease;
 }
 

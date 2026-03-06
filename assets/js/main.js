@@ -3,15 +3,22 @@ import { getMovies, saveMovies } from './storage.js';
 
 // class="movie-list" | поиск карточек фильмов (т.к атрибут class)
 const movieList = document.querySelector('.movie-list');
+
 // class="footer-actions" | кнопка добавить глобальная отдельная (т.к атрибут class)
 const actionsButtonAdd = document.querySelector('.movie-actions');
 
+// id="hamburger" | поиск hamburger-menu (т.к атрибут id)
 const hamburger = document.querySelector('#hamburger');
-const navLinks = document.querySelector('#nav-links');
 
+// id="hamburger" | поиск nav-links (т.к атрибут id)
+const navLinks = document.querySelector('#nav-links'); 
+
+// проверка условия на hamburger-menu с обработчиком события click
 if (hamburger && navLinks) {
-    hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
+    hamburger.addEventListener('click', () => {
+        // если класса нету добавляет
+        // если класс есть удаляет
+        navLinks.classList.toggle('active');
     });
 }
 
@@ -49,12 +56,12 @@ if (getMovies().length === 0) {
 }
 
     const globalButtonAdd = document.createElement('button');
-    globalButtonAdd.classList.add("btn-add");
+    globalButtonAdd.classList.add('btn-add');
     globalButtonAdd.type = "button";
     globalButtonAdd.textContent = 'Добавить фильм';
 
     // событие на переход страницы form.html
-    globalButtonAdd.addEventListener("click", () =>{
+    globalButtonAdd.addEventListener('click', () => {
         window.location.href = "form.html";
     });
 
@@ -108,14 +115,14 @@ if (getMovies().length === 0) {
             movies[index].watched = checkbox.checked;
             card.classList.toggle("highlight", checkbox.checked);
             console.log(`${title} ${checkbox.checked ? "просмотрен" : "не просмотрен"}`);
-            console.log(card.classList.contains("highlight"));
+            console.log(card.classList.contains('highlight'));
             saveMovies(movies); // сохраняются изменение
             renderItems(); // перерисовывается (обновляется) массив
         });
 
         // создаются кнопки  
         const buttonWatch = document.createElement('button');
-        buttonWatch.classList.add("btn-watch"); 
+        buttonWatch.classList.add('btn-watch'); 
         buttonWatch.type = "button";
         buttonWatch.textContent = 'Отметка о просмотре';
 
@@ -125,7 +132,7 @@ if (getMovies().length === 0) {
         });
 
         const buttonDelete = document.createElement('button');
-        buttonDelete.classList.add("btn-delete");
+        buttonDelete.classList.add('btn-delete');
         buttonDelete.type = "button";
         buttonDelete.textContent = 'Удалить фильм';
 
