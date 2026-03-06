@@ -91,7 +91,7 @@ if (!localStorage.getItem('movies')) {
         if (!movieList) {
           if (main) {
             const info = document.createElement('p');
-            info.textContent = 'Каталог фильмов доступен только на главной странице. Перейдите туда, чтобы просмотреть список.';
+            info.textContent = 'Каталог фильмов доступен только на главной странице. Перейдите туда, чтобы просмотреть фильмы в каталоге..';
             info.classList.add("info-message");
             main.appendChild(info);
             }
@@ -131,7 +131,7 @@ if (!localStorage.getItem('movies')) {
         const checkbox = document.createElement('input');
         checkbox.type = "checkbox";
         checkbox.checked = watched;
-        label.append("просмотрено/не просмотрено");
+        label.append(checkbox, " просмотрено/не просмотрено");
 
         // элементы создаются через createElement потому что безопасно без innerHTML
         // создается постер (фото)
